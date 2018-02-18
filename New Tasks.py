@@ -9,26 +9,26 @@
 на которой остановимся.
 '''
 
-def stop_road():
+def stop_road(speed, time, road):
     moment_road = abs(speed * time)
     while moment_road >= road:
         moment_road = moment_road - road
     print(moment_road)
 
 def main():
-    road = int(109)
-    moment_road = int(0)
+    road = 109
+    moment_road = 0
     speed = int(input("Enter the speed of your car: "))
     time = int(input("How many hours your car will drive"))
     if speed > 0:
         print("Your car will go clockwise")
-        stop_road()
+        stop_road(speed, time, road)
     elif speed == 0:
         print("Your car doesn't go")
-        stop_road()
+        stop_road(speed, time, road)
     else:
         print("Your car will go counterclockwise")
-        stop_road()
+        stop_road(speed, time, road)
 
 if __name__ == '__main__':
     main()
