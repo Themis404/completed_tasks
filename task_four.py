@@ -42,7 +42,6 @@ def way_into_degrees( hour_all, min_all, sec_all, seconds, minutes, hours):
     return degrees
 
 def main():
-
     half_day = 0
     sec_all = 60
     min_all = 60
