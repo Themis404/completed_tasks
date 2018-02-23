@@ -7,6 +7,7 @@ M минут, S секунд (0 ≤ H < 12, 0 ≤ M < 60, 0 ≤ S < 60).
 '''
 
 def time_right_now(seconds, minutes, hours, half_day):
+
     while seconds >= 60:
         seconds = seconds - 60
         minutes += 1
