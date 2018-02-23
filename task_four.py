@@ -10,20 +10,21 @@ def time_right_now(seconds, minutes, hours, half_day):
     while seconds >= 60:
         seconds = seconds - 60
         minutes += 1
-        return seconds
+        return seconds, minutes
 
     while minutes >= 60:
         minutes = minutes - 60
         hours += 1
-        return minutes
+        return minutes, hours
 
     while hours > 12:
         hours = hours - 12
         half_day += 1
-        return half_day, hours
+        return hours, half_day
 
     if hours <= 12:
         half_day += 1
+        return half_day
 
 def half_day_(half_day):
 
@@ -52,7 +53,7 @@ def main():
 
     time_right_now(seconds, minutes, hours, half_day)
     print("Время: часы", hours, ", минуты", minutes, ", секунды", seconds)
-    half_day_(half_day)
+    print(half_day_(half_day))
     print(way_into_degrees(hour_all, min_all, sec_all, seconds, minutes, hours), "°")
 
 if __name__ == "__main__":
