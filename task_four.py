@@ -6,26 +6,32 @@ M минут, S секунд (0 ≤ H < 12, 0 ≤ M < 60, 0 ≤ S < 60).
 и выведите его в виде действительного числа.
 '''
 
-def time_right_now(seconds, minutes, hours, half_day):
+def time_sec(time):
 
-    while seconds >= 60:
-        seconds = seconds - 60
-        minutes += 1
-        return seconds, minutes
+    while time["seconds"] >= 60:
+        time["seconds"] = time["seconds"] - 60
+        time["minutes"] += 1
 
-    while minutes >= 60:
-        minutes = minutes - 60
-        hours += 1
-        return minutes, hours
 
-    while hours > 12:
-        hours = hours - 12
+def time_min(time):
+
+    while time["minutes"] >= 60:
+        time["minutes"] = time["minutes"] - 60
+        time["hours"] += 1
+
+
+def time_hours(time, half_day):
+
+    while time["hours"] > 12:
+        time["hours"] = time["hours"] - 12
         half_day += 1
-        return hours, half_day
 
-    if hours <= 12:
+
+def time_half_day(half_day, time):
+
+    if time["hours"] <= 12:
         half_day += 1
-        return half_day
+    return half_day
 
 def half_day_(half_day):
 
@@ -34,11 +40,11 @@ def half_day_(half_day):
     else:
         return "Это ночь/утро"
 
-def way_into_degrees( hour_all, min_all, sec_all, seconds, minutes, hours):
+def way_into_degrees( hour_all, min_all, sec_all, time):
 
-    time = (hours*hour_all) + (minutes*min_all) + (seconds*sec_all)
+    all_time = (time["hours"]*hour_all) + (time["minutes"]*min_all) + (time["seconds"]*sec_all)
     degrees_all = 360/(sec_all * min_all * hour_all)
-    degrees = time*degrees_all
+    degrees = all_time*degrees_all
     return degrees
 
 def main():
@@ -51,11 +57,17 @@ def main():
     hours = int(input("Сколько часов: "))
     minutes = int(input("Сколько минут: "))
     seconds = int(input("Сколько секунда: "))
+    time = {"hours": hours, "minutes": minutes, "seconds": seconds}
 
-    time_right_now(seconds, minutes, hours, half_day)
-    print("Время: часы", hours, ", минуты", minutes, ", секунды", seconds)
+    time_sec(time)
+    time_min(time)
+    time_hours(time, half_day)
+
+    half_day = time_half_day(half_day, time)
+
+    print("Время: часы", time["hours"], ", минуты", time["minutes"], ", секунды", time["seconds"])
     print(half_day_(half_day))
-    print(way_into_degrees(hour_all, min_all, sec_all, seconds, minutes, hours), "°")
+    print(way_into_degrees(hour_all, min_all, sec_all, time), "°")
 
 if __name__ == "__main__":
     main()
