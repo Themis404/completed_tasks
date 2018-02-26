@@ -12,7 +12,8 @@ def main():
     print(line)
     for letter in line:
         if line.count(letter) > 1:
-            line.remove(letter)
+            for i in range(line.count(letter)-1):
+                line.remove(letter)
     print(line)
 
 if __name__ == '__main__':
