@@ -10,14 +10,14 @@ def main():
     print('Первый список без изменений: ', list1)
     print('Второй список без изменений: ', list2)
 
-    for letter in list1:
-        while list1.count(letter) > 1:
-            list1.remove(letter)
+    for words in list1:
+        while list1.count(words) > 1:
+            list1.remove(words)
     print('Первый список с исключением повтора слов: ', list1)
 
-    for letter2 in list2:
-        while list2.count(letter2) > 1:
-            list2.remove(letter2)
+    for words2 in list2:
+        while list2.count(words2) > 1:
+            list2.remove(words2)
     print('Второй список с исключением повтора слов: ', list2)
 
     list1.extend(list2)
@@ -25,10 +25,10 @@ def main():
 
     list2.clear()
 
-    for letter in list1:
-        while list1.count(letter) > 1:
-            list2.append(letter)
-            list1.remove(letter)
+    for words in list1:
+        while list1.count(words) > 1:
+            list2.append(words)
+            list1.remove(words)
     print('Искомые повторения из двух списков: ', list2)
 
 if __name__ == '__main__':
