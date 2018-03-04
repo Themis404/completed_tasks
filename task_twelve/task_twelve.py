@@ -7,32 +7,31 @@
 
 import math
 
-def rangeCoords(line):
+def rangeCoords(coords: list):
+
+    coords = [int(num) for num in coords]
+
+    length = math.sqrt((coords[0]-coords[2])**2 + (coords[1]-coords[3])**2)
+
+    return length
+
+
+def main():
 
     maxLength = 0
+    file = open('coordinates.txt', 'rt')
 
-    for i, coordinates in enumerate(line):
 
-        coordinates = line.split()
-        coordinates = [int(num) for num in coordinates]
+    for line in file:
 
-        length = math.sqrt((coordinates[0]+coordinates[2])**2 + (coordinates[1]+coordinates[3])**2)
+        coords = line.split()
+        length = rangeCoords(coords)
+        print('Координаты двух точек: ', coords)
 
         if length > maxLength:
             maxLength = length
 
-    return maxLength
-
-def main():
-
-    file = open('coordinates.txt', 'rt')
-    line = file.read()
-    print(line)
-
-    coords = line.split(' ')
-    print('Весь файл: ', coords)
-
-    print(rangeCoords(line))
+    print(maxLength)
     file.close()
 
 
