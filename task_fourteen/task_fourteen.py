@@ -10,19 +10,23 @@ class Fraction:
         self.numerator = numerator
         self.denominator = denominator
 
-    def comparison(self):
-        if self.numerator > self.denominator:
-            return self.numerator
+
+class Operations:
+
+    def __init__(self, fraction: Fraction):
+        self.fraction_to_operate = fraction
+
+    def get_max(self):
+        if self.fraction_to_operate.numerator > self.fraction_to_operate.denominator:
+            return self.fraction_to_operate.numerator
         else:
-            return self.denominator
+            return self.fraction_to_operate.denominator
 
     def plus(self):
-        self.sum = self.numerator + self.denominator
-        return self.sum
+        return self.fraction_to_operate.numerator + self.fraction_to_operate.denominator
 
     def multiplication(self):
-        self.multiply = self.numerator * self.denominator
-        return self.multiply
+        return self.fraction_to_operate.numerator * self.fraction_to_operate.denominator
 
 def main():
 
@@ -30,10 +34,10 @@ def main():
     den = int(input("Введите второе значение "))
 
     test = Fraction(num, den)
-
-    print("Из двух чисел больше: ", test.comparison())
-    print("Сложение: ", test.plus())
-    print("Умножение: ", test.multiplication())
+    operTest = Operations(test)
+    print("Из двух чисел больше: ", operTest.get_max())
+    print("Сложение: ", operTest.plus())
+    print("Умножение: ", operTest.multiplication())
 
 if __name__ == '__main__':
     main()
