@@ -6,15 +6,16 @@
 
 class Fraction:
 
-    def __init__(self, numerator, denominator, addend):
+    def __init__(self, numerator, denominator):
         self.numerator = numerator
         self.denominator = denominator
-        self.addend = addend
+
 
 class Operations:
 
-    def __init__(self, fraction: Fraction):
+    def __init__(self, fraction: Fraction, addend):
         self.fraction_to_operate = fraction
+        self.addend = addend
 
     def get_max(self):
         if self.fraction_to_operate.numerator > self.fraction_to_operate.denominator:
@@ -29,7 +30,7 @@ class Operations:
         return self.fraction_to_operate.numerator * self.fraction_to_operate.denominator
 
     def sum_num_and_addend(self):
-        self.fraction_to_operate.numerator += self.fraction_to_operate.addend
+        self.fraction_to_operate.numerator += self.addend
         return self.fraction_to_operate.numerator
 
     def common_divisor(self):
@@ -52,8 +53,8 @@ def main():
     den = int(input("Введите знаменатель "))
     addend = int(input("Число для суммы с числителеем "))
 
-    test = Fraction(num, den, addend)
-    operTest = Operations(test)
+    test = Fraction(num, den)
+    operTest = Operations(test, addend)
 
     print("Дробь: ", num, '/', den)
     print("Сокращение дробей: ", int(num/operTest.common_divisor()), '/', int(den/operTest.common_divisor()))
