@@ -13,9 +13,8 @@ class Fraction:
 
 class Operations:
 
-    def __init__(self, fraction: Fraction, addend):
+    def __init__(self, fraction: Fraction):
         self.fraction_to_operate = fraction
-        self.addend = addend
 
     def get_max(self):
         if self.fraction_to_operate.numerator > self.fraction_to_operate.denominator:
@@ -29,8 +28,8 @@ class Operations:
     def multiplication(self):
         return self.fraction_to_operate.numerator * self.fraction_to_operate.denominator
 
-    def sum_num_and_addend(self):
-        self.fraction_to_operate.numerator += self.addend
+    def sum_num_and_addend(self, addend):
+        self.fraction_to_operate.numerator += addend
         return self.fraction_to_operate.numerator
 
     def common_divisor(self):
@@ -54,14 +53,14 @@ def main():
     addend = int(input("Число для суммы с числителеем "))
 
     test = Fraction(num, den)
-    operTest = Operations(test, addend)
+    operTest = Operations(test)
 
     print("Дробь: ", num, '/', den)
     print("Сокращение дробей: ", int(num/operTest.common_divisor()), '/', int(den/operTest.common_divisor()))
     print("Из двух чисел больше: ", operTest.get_max())
     print("Сложение числителя и знаменателя: ", operTest.plus())
     print("Умножение: ", operTest.multiplication())
-    print("Сложение числителя с новым значением: ", operTest.sum_num_and_addend())
+    print("Сложение числителя с новым значением: ", operTest.sum_num_and_addend(addend))
     print("Сложение числителя и знаменателя: ", operTest.plus())
 
 if __name__ == '__main__':
